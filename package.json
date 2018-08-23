@@ -1,0 +1,9 @@
+{
+  "name": "StateBoxExample",
+  "description": "StateBox Example",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@wmfs/statebox": "^1.3.2"
+  }
+}
