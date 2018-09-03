@@ -21,7 +21,7 @@ const main = async function () {
 			}
 		}
 	})
-	statebox.createStateMachines({
+	await statebox.createStateMachines({
 		'calculator': {
 			Comment: 'A simple calculator',
 			StartAt: 'OperatorChoice',
@@ -56,14 +56,8 @@ const main = async function () {
 				}
 			}
 		}
-	}, {},
-		function () {
-			executeStateMachine();
-		}
-	)
-}
+	})
 
-const executeStateMachine = async function () {
 	const executionDescription = await statebox.startExecution({
 		numbers: {
 			number1: 3,
@@ -74,9 +68,8 @@ const executeStateMachine = async function () {
 		'calculator',
 		{}
 	)
-
-	const executionName = executionDescription.executionName
-	const executionDescription2 = await statebox.waitUntilStoppedRunning(executionName)
+	
+	const executionDescription2 = await statebox.waitUntilStoppedRunning(executionDescription.executionName)
 	console.log(executionDescription2)
 }
 
